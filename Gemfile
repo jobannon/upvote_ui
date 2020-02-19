@@ -10,7 +10,8 @@ gem 'fast_jsonapi'
 gem 'pry'
 gem 'json'
 gem 'dotenv'
-
+gem 'require_all'
+ 
 group :development, :test do
   gem 'factory_bot'
   gem 'faker'
