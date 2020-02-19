@@ -1,0 +1,30 @@
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
+
+before_install: gem install bundler -v 2.0.2
+
+languge: ruby 
+
+rvm: 
+  -2.6.3
+
+services:
+  - postgresql
+
+script:
+  - bundle exec rake db:create 
+  - bundle exec rake db:migrate
+  - bundle exec rspec 
+
+
+
+    # # for heroku
+# deploy:
+  # provider: heroku
+  # api_key:
+    # secure: ENV['HEROKU_API_KEY'] 
+  # app: rails_eng
+  # on:
+    # repo: OrencioRodolfo/rails_eng
+
