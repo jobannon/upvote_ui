@@ -1,0 +1,23 @@
+<h2><center>Create & Submit Your Terrificus Idea</center></h2>
+<form action="/ideas/create">
+  <p>Title: <textarea rows = '2' cols= '80' name="title" id="title"></textarea></p>
+  <p>Pitch: <input type="text" name="pitch" id="pitch"></p>
+  <p>Problem: <input type="text" name="problem" id="problem"></p>
+  <p>Solution: <input type="text" name="solution" id="solution"></p>
+  <p>Audience: <input type="text" name="audience" id="audience"></p>
+  <p>Features: <input type="text" name="features" id="features"></p>
+  <p>APIs: <input type="text" name="apis" id="apis"></p>
+  <p>OAuth: <input type="text" name="oauth" id="oauth"></p>
+  <input type="submit" id='submit_btn'>
+</form>
+
+<script type="text/javascript" defer>
+  var element = document.getElementById('submit_btn');
+  element.addEventListener('onclick', function(){
+    debugger;
+
+  });
+</script>
+
+
+<!-- document.getElementById('pitch').value -->
