@@ -10,7 +10,7 @@ Dir.glob(File.join(APP_ROOT, 'app', 'controllers', '*.rb')).each { |file| requir
 # require the model(s)
 Dir.glob(File.join(APP_ROOT, 'app', 'models', '*.rb')).each { |file| require file }
 
-# configure TaskManagerApp settings
+# configure Upvote settings
 class Upvote < Sinatra::Base
   set :method_override, true
   set :root, APP_ROOT
