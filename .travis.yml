@@ -1,13 +1,11 @@
-language: ruby
+dist: trusty
 addons:
-  chrome: beta
+  chrome: stable
+language: ruby
+rvm: 2.6.3
+cache: bundler
 before_install:
 - gem install bundler -v 2.0.2
-- "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
-rvm:
-- 2.6.3
-services:
-- postgresql
 script:
 - bundle exec rspec
 deploy:
