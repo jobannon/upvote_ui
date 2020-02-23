@@ -3,7 +3,6 @@ addons:
   chrome: beta
 before_install:
 - gem install bundler -v 2.0.2
-- puma
 - "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
 rvm:
 - 2.6.3
