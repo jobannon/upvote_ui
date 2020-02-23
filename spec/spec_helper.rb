@@ -33,11 +33,18 @@ RSpec.configure do |config|
   config.order = 'default'
 end
 
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+Capybara.register_driver :chrome do |app|
+	options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
+
+	Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
-Capybara.javascript_driver = :selenium_chrome
+Capybara.javascript_driver = :chrome
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Selenium::Driver.new(app, browser: :chrome)
+# end
+#
+# Capybara.javascript_driver = :selenium_chrome
 
 Capybara.configure do |config|
   config.default_max_wait_time = 5
