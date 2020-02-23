@@ -1,3 +1,3 @@
-require './config/environment'
+require './upvote'
 
-run ApplicationController
+run Sinatra::Application
