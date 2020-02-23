@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'pry'
 
 configure do
   set :public_folder, 'public'
