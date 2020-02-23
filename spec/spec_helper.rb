@@ -4,8 +4,9 @@ require 'rack/test'
 require 'pry'
 require 'rspec'
 require 'shoulda/matchers'
-require 'vcr'
-require 'webmock/rspec'
+#require 'vcr'
+#require 'webmock/rspec'
+require 'selenium-webdriver'
 
 ENV['RACK_ENV'] = 'test'
 
@@ -30,6 +31,16 @@ RSpec.configure do |config|
   config.include Capybara
   config.include RSpecMixin
   config.order = 'default'
+end
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+
+Capybara.javascript_driver = :selenium_chrome
+
+Capybara.configure do |config|
+  config.default_max_wait_time = 5
 end
 
 Shoulda::Matchers.configure do |config|

@@ -1,9 +1,14 @@
 require 'spec_helper'
 
-RSpec.describe 'Upvote landing page' do
-  it 'displays idea cards' do
-    visit '/'
+RSpec.describe 'Cohorts ideas' do
+  it 'displays all ideas assosiated with a cohort', js: true, type: :feature do
+    visit '/cohorts/1909/ideas'
+    sleep(5)
 
-    expect(page).to have_content('Great')
+    expect(page).to have_content("Login")
+    
+    expect(page).to have_content("save the world")
+    expect(page).to have_content("Great Idea1")
+    expect(page).to have_content("Great Idea2")
   end
 end
