@@ -31,6 +31,9 @@ RSpec.configure do |config|
   config.include Capybara
   config.include RSpecMixin
   config.order = 'default'
+  config.before(:each, type: :system) do
+    driven_by :selenium, using: :chrome, options: { args: ["headless", "disable-gpu", "no-sandbox", "disable-dev-shm-usage"] }
+  end
 end
 
 Capybara.register_driver :chrome do |app|
