@@ -1,7 +1,12 @@
 before_script:
 - cp config/database.yml.travis config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres
+- ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 before_install: gem install bundler -v 2.0.2
+addons:
+  apt:
+    - google-chrome-stable
+    - chromium-chromedriver
 language: ruby
 rvm:
 - 2.6.3
