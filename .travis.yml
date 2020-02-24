@@ -1,4 +1,11 @@
+before_script:
+- ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 before_install: gem install bundler -v 2.0.2
+addons:
+  chrome: stable
+  apt:
+    # - google-chrome-stable
+    - chromium-chromedriver
 language: ruby
 rvm:
 - 2.6.3
@@ -13,3 +20,4 @@ deploy:
     repo: jobannon/upvote_ui
   api_key:
     secure: zouuPz8EixaoVQdIlP6BVqAEeoIZp3nz0jFlMzPxVhYjLlUa78Re1hEJ4s3YHQ1vR0c7eH2Mbq066q69dUozl/MvoiAvarBL9545oYQGKoyg4+CgUms/BAh9MF37U2JfkhFmhqzNMDJOLYUwbHAsFXQNvRRVBqdI4xcIBB35H4j9i5HPg4jgy7MfNqfcSZSYdQGPsVZ2WXozebFmXEb4fxFs5tF4fEHA5CuR1ZXbhGXl8z4Ha9ohTB/RDyejKgB6bW3jXIAolvbF0FydDrX/or6GsMsLysWRkZBR3M7z/eJfmlp9er2uOqwaeoqd0aAn6mfBdQX6LQu31LC7Ae3gdWHKFdPkYY1dt2BIVCvNkkYhipS7KqXDKZ1/AEb4kFiQwHJyQ6I8MOvRWAH0lCrCiKwVYLQNbqgWBKuVfuGz4saXcGGvfR1HAZ+g5Z2SZJidBkpC9ZymLagzuQYltZcGTK4si49EjuNUGlYb4632lc3mJGSaCnU2hUgYF1RH2bO99n50apwfralvI7ekefxp2FCMdKslU/D/epuKT6ZVjeDDXtiCpI0Ua9W8nWB89D4h6swqFSnsfl93xhUd5fp/cp6Ug01vmqAw9TBl4fpwv/V1MN6rtS04zWzLMqBv/3o4FsyDUOhkp8jk3UfLnwVe1YnBRZTMlhkQCp0ypcbLFk8=
+

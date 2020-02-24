@@ -1,0 +1,42 @@
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    </div>
+    <div class="col-sm-8 text-left">
+      <section id='ideas_container'>
+
+      </section>
+    </div>
+    <div class="col-sm-2 sidenav">
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" defer>
+  fetch('https://upvote-ideas.herokuapp.com/api/v1/cohorts/1909/ideas').then(function(result) {
+    return result.json();
+  }).then(function(json) {
+    displayResults(json);
+  });
+
+  function displayResults(json) {
+
+    const ideas = json.data;
+
+    for(var i = 0; i < ideas.length; i++) {
+      const idea = document.createElement('idea');
+      const title = document.createElement('h2');
+      const pitch = document.createElement('p');
+
+      let current = ideas[i];
+      console.log(current);
+
+      title.textContent = current.attributes.title
+      pitch.textContent = current.attributes.pitch
+
+      idea.appendChild(title);
+      idea.appendChild(pitch);
+      document.getElementById("ideas_container").appendChild(idea);
+    }
+  }
+</script>
