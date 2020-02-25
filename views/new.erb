@@ -1,5 +1,5 @@
 <h2><center>Create a Terrificus Idea</center></h2>
-<form action="/" id='createIdea'>
+<form action="http://localhost:3000/api/v1/cohorts/1909/ideas/" method='POST' id='createIdea'>
   <p>
     <strong>Project Title:</strong>
     <textarea rows="2" cols="168" name="title" id="title"></textarea>
@@ -41,7 +41,7 @@
   </p>
   <input type="submit" value='Submit Idea' formmethod="post" id='submit_btn'>
 </form>
-
+<!--
 <script type="text/javascript">
   window.addEventListener("load", function(){
     function sendData(){
@@ -77,17 +77,4 @@
       sendData();
     });
   });
-</script>
-
-
-
-<!-- <script type="text/javascript" defer>
-  var element = document.getElementById('submit_btn');
-  element.addEventListener('onclick', function(){
-    debugger;
-
-  });
 </script> -->
-
-
-<!-- document.getElementById('pitch').value -->
