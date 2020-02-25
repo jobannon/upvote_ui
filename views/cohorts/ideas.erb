@@ -61,13 +61,13 @@
     }
   }
 
-  // var intervalID = window.setInterval(myCallback, 5000)
-  //
-  // function myCallback() {
-  //   fetch('http://localhost:3000/api/v1/cohorts/ideas').then(function(result) {
-  //     return result.json();
-  //   }).then(function(json) {
-  //     displayResults(json);
-  //   });
-  // }
+  var intervalID = window.setInterval(myCallback, 10000)
+
+  function myCallback() {
+    fetch('http://localhost:3000/api/v1/cohorts/ideas').then(function(result) {
+      return result.json();
+    }).then(function(json) {
+      displayResults(json);
+    });
+  }
 </script>
