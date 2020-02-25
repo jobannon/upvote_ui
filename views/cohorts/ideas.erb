@@ -23,6 +23,7 @@
   });
 
   function displayResults(json) {
+    document.getElementById('container_2').innerHTML = "";
 
     const ideas = json.data;
 
@@ -32,17 +33,17 @@
       const idea = document.createElement('idea');
       const title = document.createElement('h2');
       const pitch = document.createElement('p');
+      const votes = document.createElement('p');
       var btn = document.createElement("button");
       var form = document.createElement('form');
       form.setAttribute('method', 'post');
-
-
 
       let current = ideas[i];
       console.log(current);
 
       title.textContent = current.attributes.title
       pitch.textContent = current.attributes.pitch
+      votes.textContent = current.attributes.vote_count
       var idea_id = current.id
       form.setAttribute('action', `http://localhost:3000/api/v1/cohorts/ideas/${idea_id}`)
       btn.innerHTML = "Vote";
@@ -52,10 +53,21 @@
       idea.appendChild(title);
       idea.appendChild(pitch);
       idea.appendChild(form);
+      idea.appendChild(votes);
       gallery.appendChild(idea);
       responsive.appendChild(gallery);
       document.getElementById("container_2").appendChild(responsive);
 
     }
   }
+
+  // var intervalID = window.setInterval(myCallback, 5000)
+  //
+  // function myCallback() {
+  //   fetch('http://localhost:3000/api/v1/cohorts/ideas').then(function(result) {
+  //     return result.json();
+  //   }).then(function(json) {
+  //     displayResults(json);
+  //   });
+  // }
 </script>
