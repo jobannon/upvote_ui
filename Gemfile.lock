@@ -20,6 +20,8 @@ GEM
     childprocess (3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     diff-lcs (1.3)
     docile (1.3.2)
     dotenv (2.7.5)
@@ -31,6 +33,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
+    hashdiff (1.0.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     json (2.3.0)
@@ -76,6 +79,7 @@ GEM
     rspec-support (3.9.2)
     ruby2_keywords (0.0.2)
     rubyzip (2.2.0)
+    safe_yaml (1.0.5)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -98,6 +102,11 @@ GEM
     tilt (2.0.10)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
+    vcr (5.1.0)
+    webmock (3.8.2)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.2.2)
@@ -126,6 +135,8 @@ DEPENDENCIES
   simplecov
   sinatra
   slim
+  vcr
+  webmock
 
 BUNDLED WITH
    2.1.4
