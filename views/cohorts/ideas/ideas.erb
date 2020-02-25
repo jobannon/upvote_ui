@@ -13,7 +13,7 @@
 </div>
 
 <script type="text/javascript" defer>
-  fetch('https://upvote-ideas.herokuapp.com/api/v1/cohorts/1909/ideas').then(function(result) {
+  fetch('http://localhost:3000/api/v1/cohorts/1909/ideas', {credentials: 'include'}).then(function(result) {
     return result.json();
   }).then(function(json) {
     displayResults(json);
