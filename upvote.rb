@@ -9,6 +9,6 @@ get '/' do
   erb :welcome
 end
 
-get '/cohorts/:cohort_number/ideas' do
-  erb :'cohorts/ideas/ideas'
+get '/cohorts/ideas' do
+  erb :'cohorts/ideas'
 end

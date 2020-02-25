@@ -3,9 +3,12 @@
     <div class="col-sm-2 sidenav">
     </div>
     <div class="col-sm-8 text-left">
-      <section id='ideas_container'>
+      <div id="container">
+      <div id="container_2">
 
-      </section>
+      </div>
+      </div>
+
     </div>
     <div class="col-sm-2 sidenav">
     </div>
@@ -13,7 +16,7 @@
 </div>
 
 <script type="text/javascript" defer>
-  fetch('https://upvote-ideas.herokuapp.com/api/v1/cohorts/1909/ideas').then(function(result) {
+  fetch('http://localhost:3000/api/v1/cohorts/ideas').then(function(result) {
     return result.json();
   }).then(function(json) {
     displayResults(json);
@@ -24,19 +27,35 @@
     const ideas = json.data;
 
     for(var i = 0; i < ideas.length; i++) {
+      const responsive = document.createElement('responsive');
+      const gallery = document.createElement('gallery');
       const idea = document.createElement('idea');
       const title = document.createElement('h2');
       const pitch = document.createElement('p');
+      var btn = document.createElement("button");
+      var form = document.createElement('form');
+      form.setAttribute('method', 'post');
+
+
 
       let current = ideas[i];
       console.log(current);
 
       title.textContent = current.attributes.title
       pitch.textContent = current.attributes.pitch
+      var idea_id = current.id
+      form.setAttribute('action', `http://localhost:3000/api/v1/cohorts/ideas/${idea_id}`)
+      btn.innerHTML = "Vote";
+      btn.setAttribute('type', 'submit');
 
+      form.appendChild(btn);
       idea.appendChild(title);
       idea.appendChild(pitch);
-      document.getElementById("ideas_container").appendChild(idea);
+      idea.appendChild(form);
+      gallery.appendChild(idea);
+      responsive.appendChild(gallery);
+      document.getElementById("container_2").appendChild(responsive);
+
     }
   }
 </script>
