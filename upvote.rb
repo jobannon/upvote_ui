@@ -21,6 +21,10 @@ get '/ideas/new' do
   erb :new
 end
 
-get '/cohorts/:cohort_number/ideas' do
+get '/cohorts/ideas' do
   erb :'cohorts/ideas/ideas'
+end
+
+get '/auth/github/callback' do
+  redirect 'https://upvote-ideas.herokuapp.com/auth/github/callback'
 end
