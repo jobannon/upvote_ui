@@ -4,8 +4,8 @@ require 'rack/test'
 require 'pry'
 require 'rspec'
 require 'shoulda/matchers'
-#require 'vcr'
-#require 'webmock/rspec'
+require 'vcr'
+require 'webmock/rspec'
 require 'selenium-webdriver'
 
 ENV['RACK_ENV'] = 'test'
@@ -37,6 +37,14 @@ RSpec.configure do |config|
   end
 end
 
+VCR.configure do |config|
+  config.ignore_localhost = true
+  config.cassette_library_dir = 'spec/cassettes'
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data('<GITHUB_ACCESS_TOKEN>') { ENV['GITHUB_ACCESS_TOKEN'] }
+end
+
 Capybara.register_driver :chrome do |app|
 	options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
 
@@ -44,11 +52,6 @@ Capybara.register_driver :chrome do |app|
 end
 
 Capybara.javascript_driver = :chrome
-# Capybara.register_driver :selenium do |app|
-#   Capybara::Selenium::Driver.new(app, browser: :chrome)
-# end
-#
-# Capybara.javascript_driver = :selenium_chrome
 
 Capybara.configure do |config|
   config.default_max_wait_time = 5
