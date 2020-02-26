@@ -16,7 +16,7 @@
 </div>
 
 <script type="text/javascript" defer>
-  fetch('https://upvote-ideas.herokuapp.com/api/v1/cohorts/ideas', {credentials: 'include'}).then(function(result) {
+  fetch('http://localhost:3000/api/v1/cohorts/ideas', {credentials: 'include'}).then(function(result) {
     return result.json();
   }).then(function(json) {
     displayResults(json);
@@ -40,7 +40,7 @@
       $(btn).click(function(){
        <%# post to back when button clicks, prevent default %>
 
-      }) 
+      })
 
       let current = ideas[i];
       console.log(current);
@@ -49,7 +49,7 @@
       pitch.textContent = current.attributes.pitch
       votes.textContent = current.attributes.vote_count
       var idea_id = current.id
-      form.setAttribute('action', `https://upvote-ideas.herokuapp.com/api/v1/cohorts/ideas/${idea_id}`)
+      form.setAttribute('action', `http://localhost:3000/api/v1/cohorts/ideas/${idea_id}`)
       btn.innerHTML = "Vote";
       btn.setAttribute('type', 'submit');
 
@@ -68,7 +68,7 @@
   <%# var intervalID = window.setInterval(myCallback, 10000) %>
 
   function myCallback() {
-    fetch('https://upvote-ideas.herokuapp.com/api/v1/cohorts/ideas', {credentials: 'include'}).then(function(result) {
+    fetch('http://localhost:3000/api/v1/cohorts/ideas', {credentials: 'include'}).then(function(result) {
       return result.json();
     }).then(function(json) {
       displayResults(json);

@@ -13,17 +13,17 @@ get '/' do
 end
 
 get '/ideas/new' do
-  erb :new
+  erb :'cohorts/ideas/new'
 end
 
 get '/cohorts/ideas' do
   erb :'cohorts/ideas'
 end
 
-get '/cohorts/ideas/id' do 
-  erb :'cohorts/id'
+get '/cohorts/ideas/:id' do
+  erb :'cohorts/ideas/show'
 end
 
 get '/auth/github/callback' do
-  redirect 'https://upvote-ideas.herokuapp.com/auth/github/callback'
+  redirect 'http://localhost:3000/auth/github/callback'
 end
