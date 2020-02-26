@@ -27,6 +27,7 @@ end
 Capybara.app = app
 
 RSpec.configure do |config|
+  set :environment, :test
   config.include Capybara::DSL
   config.include Capybara
   config.include RSpecMixin
