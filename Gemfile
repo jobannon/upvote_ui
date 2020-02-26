@@ -15,7 +15,7 @@ gem 'rack-test'
 gem 'launchy'
 gem 'selenium-webdriver'
 
-group :test, :development do 
+group :test, :development do
   gem 'simplecov'
   gem 'webmock'
   gem 'vcr'
