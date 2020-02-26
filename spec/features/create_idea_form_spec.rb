@@ -28,3 +28,4 @@ RSpec.describe 'Create idea page' do
     # expect(page).to have_content('harmony')
   end
 end
+  
