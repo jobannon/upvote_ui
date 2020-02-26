@@ -22,7 +22,7 @@ get '/ideas/new' do
 end
 
 get '/cohorts/ideas' do
-  erb :'cohorts/ideas/ideas'
+  erb :'cohorts/ideas'
 end
 
 get '/auth/github/callback' do

@@ -40,6 +40,41 @@
       }
       .row.content {height:auto;}
     }
+
+    #container_2 {
+      display: inline-flex;
+      flex-flow: wrap;
+      margin: 10px;
+      text-align: center;
+
+    }
+
+    #container {
+      text-align: center;
+
+    }
+
+    gallery {
+      width: 255px;
+      height: 200px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    gallery:hover {
+      border: 1px solid #777;
+    }
+
+    responsive {
+      margin: 20px;
+      width: 24.99999%;
+      text-align: center;
+      display: inline-grid;
+      justify-content: space-between;
+      width: 255px;
+      height: 200px;
+    }
+
   </style>
 </head>
 
@@ -51,12 +86,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="/">UpVote</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Cohorts</a></li>
+
+        <li><a href="/cohorts">Cohorts</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="https://upvote-ideas.herokuapp.com/auth/github"><span class="glyphicon glyphicon-log-in"></span> Login with GitHub</a></li>
