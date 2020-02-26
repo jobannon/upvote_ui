@@ -37,6 +37,10 @@
       var btn = document.createElement("button");
       var form = document.createElement('form');
       form.setAttribute('method', 'post');
+      $(btn).click(function(){
+       <%# post to back when button clicks, prevent default %>
+
+      }) 
 
       let current = ideas[i];
       console.log(current);
@@ -61,7 +65,7 @@
     }
   }
 
-  var intervalID = window.setInterval(myCallback, 10000)
+  <%# var intervalID = window.setInterval(myCallback, 10000) %>
 
   function myCallback() {
     fetch('https://upvote-ideas.herokuapp.com/api/v1/cohorts/ideas', {credentials: 'include'}).then(function(result) {
