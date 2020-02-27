@@ -12,12 +12,20 @@ get '/' do
   erb :welcome
 end
 
-get '/ideas/new' do
-  erb :new
+get '/cohorts/ideas/new' do
+  erb :'cohorts/ideas/new'
 end
 
 get '/cohorts/ideas' do
   erb :'cohorts/ideas'
+end
+
+get '/cohorts/ideas/:id' do
+  erb :'cohorts/ideas/show'
+end
+
+get '/cohorts/ideas/:id/edit' do
+  erb :'cohorts/ideas/edit'
 end
 
 get '/auth/github/callback' do
