@@ -24,6 +24,10 @@ get '/cohorts/ideas/:id' do
   erb :'cohorts/ideas/show'
 end
 
+get '/cohorts/ideas/:id/edit' do
+  erb :'cohorts/ideas/edit'
+end
+
 get '/auth/github/callback' do
   redirect 'http://localhost:3000/auth/github/callback'
 end
