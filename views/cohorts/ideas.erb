@@ -1,22 +1,220 @@
+<style>
+  .row.content {
+    height: 100vh;
+    overflow: scroll;
+  }
+
+  .col-sm-8.text-left {
+    width: 100%;
+    height: 100%;
+    padding-right: 300px;
+    padding-left: 0;
+  }
+
+
+  #container_2 {
+    display: inline;
+    flex-flow: wrap;
+    margin: 10px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  #container {
+    text-align: center;
+    width: 100%;
+    overflow: scroll;
+  }
+
+  gallery {
+    width: 400px;
+    height: 300px;
+    border: 1 px solid #2F4F4F;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  gallery:hover {
+    border: 2px solid #777;
+    opacity: 0.9;
+    border-radius: 4px;
+  }
+
+  responsive {
+    margin: 20px;
+    width: 24.99999%;
+    text-align: center;
+    display: inline-grid;
+    justify-content: space-between;
+    width: 400px;
+    height: 300px;
+    border-radius: 5px;
+  }
+
+
+  div.pitch {
+    padding: 0;
+    height: 91px;
+    width: 100%;
+    opacity: 0.6;
+    1px solid black;
+    display: flex;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+
+  div.pitch_text {
+    font-weight: bold;
+    color: #000000;
+    margin: auto; /* Important */
+    text-align: center;
+  }
+
+  // stats
+
+  #customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    width: 140px;
+  }
+
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+  #customers tr:hover {background-color: #ddd;}
+
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #2F4F4F;
+    color: white;
+    width: 140px;
+  }
+
+  .stats_container {
+    background-color: #f1f1f1;
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    padding-top: 125px;
+    padding-left: 10px;
+  }
+
+  form {
+    padding: 3px;
+    margin: 0;
+  }
+
+  button {
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: .6;
+  }
+
+  .title {
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    margin: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: .8;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .votes {
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 3px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 7px;
+    cursor: pointer;
+    border-radius: 4px;
+    opacity: .6;
+    height: 30px;
+    width: 30px;
+  }
+
+  .contain {
+    margin-top: 130px;
+    border-radius: 4px;
+    margin-bottom: 0;
+    padding: 0;
+    overflow: scroll;
+  }
+
+  .contain_22 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+</style>
+
+
 <div class="container-fluid text-center">
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-    </div>
     <div class="col-sm-8 text-left">
       <div id="container">
       <div id="container_2">
 
       </div>
       </div>
-
     </div>
-    <div class="col-sm-2 sidenav">
+    <div class="stats_container">
+      <h3>Rankings</h3>
+      <table id="customers">
+        <tr>
+          <th>Rank</th>
+          <th>Idea</th>
+        </tr>
+        <tr>
+          <td>The Best</td>
+          <td id='1_idea'></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td id='2_idea'></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td id='3_idea'></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td id='4_idea'></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td id='5_idea'></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
 
 <script type="text/javascript" defer>
-  fetch('https://upvote-ideas.herokuapp.com/api/v1/cohorts/ideas', {credentials: 'include'}).then(function(result) {
+  var url = '<%= ENV['BACKEND'] %>';
+
+  fetch(`${url}/api/v1/cohorts/ideas`, {credentials: 'include'}).then(function(result) {
     return result.json();
   }).then(function(json) {
     displayResults(json);
@@ -27,44 +225,64 @@
 
     const ideas = json.data;
 
+    var count = 1
+
     for(var i = 0; i < ideas.length; i++) {
       const responsive = document.createElement('responsive');
       const gallery = document.createElement('gallery');
       const idea = document.createElement('idea');
       const title = document.createElement('h2');
-      const pitch = document.createElement('p');
+      const div = document.createElement('div');
+      const pitch = document.createElement('div');
       const votes = document.createElement('p');
       var btn = document.createElement("button");
       var form = document.createElement('form');
+      const contain = document.createElement('div');
+      const contain_2 = document.createElement('div');
       form.setAttribute('method', 'post');
+      contain.setAttribute('class', "contain");
+      contain_2.setAttribute('class', "contain_22");
+      votes.setAttribute('class', "votes");
+      title.setAttribute('class', "title");
 
       let current = ideas[i];
       console.log(current);
 
-      title.textContent = current.attributes.title
-      pitch.textContent = current.attributes.pitch
-      votes.textContent = current.attributes.vote_count
-      var idea_id = current.id
-      form.setAttribute('action', `https://upvote-ideas.herokuapp.com/api/v1/cohorts/ideas/${idea_id}`)
+      title.textContent = current.attributes.title;
+      pitch.textContent = current.attributes.pitch;
+      votes.textContent = current.attributes.vote_count;
+      var img_url = current.attributes.img_url;
+      var idea_id = current.id;
+      form.setAttribute('action', `${url}/api/v1/cohorts/ideas/${idea_id}`);
       btn.innerHTML = "Vote";
       btn.setAttribute('type', 'submit');
+      gallery.setAttribute('style', `background-image: url(${img_url}); background-size: 100% 100%;`);
+      div.setAttribute('class', "pitch");
+      pitch.setAttribute('class', "pitch_text");
 
+      div.appendChild(pitch);
       form.appendChild(btn);
-      idea.appendChild(title);
-      idea.appendChild(pitch);
-      idea.appendChild(form);
-      idea.appendChild(votes);
+      contain_2.appendChild(form)
+      contain_2.appendChild(votes)
+      idea.appendChild(contain_2);
+      contain.appendChild(title)
+      contain.appendChild(div)
+      idea.appendChild(contain);
       gallery.appendChild(idea);
       responsive.appendChild(gallery);
       document.getElementById("container_2").appendChild(responsive);
 
+      if (count < 6) {
+        document.getElementById(`${count}_idea`).textContent = current.attributes.title;
+        count += 1;
+      }
     }
   }
 
-  var intervalID = window.setInterval(myCallback, 10000)
+  var intervalID = window.setInterval(myCallback, 1000000)
 
   function myCallback() {
-    fetch('https://upvote-ideas.herokuapp.com/api/v1/cohorts/ideas', {credentials: 'include'}).then(function(result) {
+    fetch(`${url}/api/v1/cohorts/ideas`, {credentials: 'include'}).then(function(result) {
       return result.json();
     }).then(function(json) {
       displayResults(json);

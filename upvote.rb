@@ -21,5 +21,5 @@ get '/cohorts/ideas' do
 end
 
 get '/auth/github/callback' do
-  redirect 'https://upvote-ideas.herokuapp.com/auth/github/callback'
+  redirect "#{ENV['BACKEND']}/auth/github/callback"
 end
