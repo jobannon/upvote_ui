@@ -28,6 +28,9 @@ get '/cohorts/ideas/:id/edit' do
   erb :'cohorts/ideas/edit'
 end
 
+get '/cohorts/ideas/:id/delete' do
+end
+
 get '/auth/github/callback' do
   redirect "#{ENV['BACKEND']}/auth/github/callback"
 end
