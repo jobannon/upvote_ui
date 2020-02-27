@@ -12,7 +12,7 @@ get '/' do
   erb :welcome
 end
 
-get '/ideas/new' do
+get '/cohorts/ideas/new' do
   erb :'cohorts/ideas/new'
 end
 
