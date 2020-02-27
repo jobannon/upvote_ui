@@ -1,5 +1,5 @@
 <h2><center>Create a Terrificus Idea</center></h2>
-<form action="https://upvote-ideas.herokuapp.com/api/v1/cohorts/ideas/new" method='POST' id='createIdea'>
+<form action="<%=ENV['BACKEND']%>/api/v1/cohorts/ideas/new" method='POST' id='createIdea'>
   <p>
     <strong>Project Title:</strong>
     <textarea rows="2" cols="168" name="title" id="title"></textarea>
@@ -41,40 +41,3 @@
   </p>
   <input type="submit" value='Submit Idea' formmethod="post" id='submit_btn'>
 </form>
-<!--
-<script type="text/javascript">
-  window.addEventListener("load", function(){
-    function sendData(){
-      const XHR = new XMLHttpRequest();
-
-      // Bind the FormData object and the form element
-      const FD = new FormData(form);
-
-      // Define what happens on successful data submission
-      XHR.addEventListener("load", function(event){
-        alert(event.target.responseText);
-      });
-
-      // Define what happens in case of error
-      XHR.addEventListener("error", function(event){
-        alert('Oops! Something went wrong.');
-      });
-
-      // Set up our request
-      XHR.open("POST", "http://localhost:3000/api/v1/cohorts/1909/ideas");
-
-      // The data sent is what the user provided in the form
-      XHR.send(FD);
-    }
-
-    // Access the form element...
-    let form = document.getElementById("createIdea");
-
-    // ...and take over its submit event.
-    form.addEventListener("submit", function(event){
-      event.preventDefault();
-
-      sendData();
-    });
-  });
-</script> -->
