@@ -5,7 +5,7 @@
     <div class="col-sm-8 text-left">
       <div id="container">
         <div id="container_2">
-          <form style='text-align:left'>
+          <form style='text-align:left' action="http://localhost:3000/api/v1/cohorts/ideas/1/edit" method='GET'>
             <p>
               <strong>Project Title:</strong>
               <textarea rows="1" cols="100" name="title" id="title"></textarea>
@@ -45,6 +45,7 @@
               <textarea rows='1' cols='100' name="oauth" id="oauth"></textarea>
             </p>
           </form>
+          <a href='/cohorts/ideas/<%=params['id']%>/edit' type="submit" id='edit_btn'>Edit Idea</a>
         </div>
       </div>
     </div>
@@ -65,6 +66,7 @@
      $("#pitch").val(idea['attributes']['pitch']).attr('disabled', true);
      $("#problem").val(idea['attributes']['problem']).attr('disabled', true);
      $("#solution").val(idea['attributes']['solution']).attr('disabled', true);
+     $("#audience").val(idea['attributes']['audience']).attr('disabled', true);
      $("#features").val(idea['attributes']['features']).attr('disabled', true);
      $("#apis").val(idea['attributes']['apis']).attr('disabled', true);
      $("#oauth").val(idea['attributes']['oauth']).attr('disabled', true);
