@@ -5,7 +5,7 @@
     <div class="col-sm-8 text-left">
       <div id="container">
         <div id="container_2">
-          <form method='post' action='http://localhost:3000/api/v1/cohorts/ideas/1/edit' style='text-align:left'>
+          <form method='post' action="<%=ENV['BACKEND']%>/api/v1/cohorts/ideas/<%=params[:id]%>/edit" style='text-align:left'>
             <input id="hidden" type="hidden" name="_method" value="post">
             <p>
               <strong>Project Title:</strong>
@@ -56,7 +56,9 @@
 </div>
 
 <script type="text/javascript" defer>
-  fetch('http://localhost:3000/api/v1/cohorts/ideas/1', {credentials: 'include'}).then(function(result) {
+  var url = '<%= ENV['BACKEND'] %>';
+  var idea_id = '<%= params[:id] %>';
+  fetch(`${url}/api/v1/cohorts/ideas/${idea_id}`, {credentials: 'include'}).then(function(result) {
     return result.json();
   }).then(function(json) {
     displayResults(json);
