@@ -7,6 +7,31 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+  var url = '<%= ENV['BACKEND'] %>';
+
+  fetch(`${url}/current_user`, {credentials: 'include'}).then(function(result) {
+    return result.json();
+      }).then(function(json) {
+        loggedIn(json);
+      });
+
+      function loggedIn(json) {
+        var log_in = document.getElementById("login");
+        var log_out = document.getElementById("logout");
+        var create_link = document.getElementById("create_link");
+
+        if (json["data"]['id'] != undefined) {
+          log_in.style.display = "none";
+          log_out.style.display = "block";
+        } else {
+          create_link.style.display = "block";
+          log_in.style.display = "block";
+          log_out.style.display = "none";
+        }
+    }
+  </script>
+
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
@@ -58,11 +83,11 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="/cohorts/ideas">Ideas</a></li>
-        <li><a href="/cohorts/ideas/new">Create Idea</a></li>
+        <li><a id='create_link' href="/cohorts/ideas/new">Create Idea</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%=ENV['BACKEND']%>/auth/github"><span class="glyphicon glyphicon-log-in"></span>Login with GitHub</a></li>
-        <li><a href="<%=ENV['BACKEND']%>/auth/github"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+        <li><a id='login' href="<%=ENV['BACKEND']%>/auth/github"><span class="glyphicon glyphicon-log-in"></span>Login with GitHub</a></li>
+        <li><a id='logout' href="<%=ENV['BACKEND']%>/auth/github"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
       </ul>
     </div>
   </div>

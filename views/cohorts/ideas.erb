@@ -244,8 +244,8 @@
       let current = ideas[i];
       console.log(current);
 
-      $(title).click(function(){
-        window.location = `/cohorts/ideas/${current.id}` 
+      $(responsive).click(function(){
+        window.location = `/cohorts/ideas/${current.id}`
       })
       title.textContent = current.attributes.title;
       pitch.textContent = current.attributes.pitch;
