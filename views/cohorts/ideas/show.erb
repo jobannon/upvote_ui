@@ -11,7 +11,7 @@
   .center_header{
     align: center;
     text-align: center;
-  } 
+  }
   form{
       display: inline-block;
   }
@@ -88,14 +88,13 @@
             </form>
               </br>
               </br>
-            <form style='text-align:left' action="/cohorts/ideas/<%=params[:id]%>/edit" method='get' id='editItem'>
-              <input type="submit" value='Edit Idea' formmethod="get" id='edit_btn'>
-            </form>
-            <form style='text-align:left' action="<%=ENV['BACKEND']%>/api/v1/cohorts/ideas/<%=params[:id]%>/delete" method='POST' id='deleteIdea'>
-              <input type="submit" value='Delete Idea' formmethod="post" id='delete_btn'>
-            </form>
-          </div>
-
+							<form style='text-align:left' action="/cohorts/ideas/<%=params[:id]%>/edit" method='get' id='editItem'>
+								<input type="submit" value='Edit Idea' formmethod="get" id='edit_btn'>
+							</form>
+							<form style='text-align:left' action="<%=ENV['BACKEND']%>/api/v1/cohorts/ideas/<%=params[:id]%>/delete" method='POST' id='deleteIdea'>
+								<input type="submit" value='Delete Idea' formmethod="post" id='delete_btn'>
+							</form>
+						</div>
         </div>
       </div>
     </div>
@@ -107,6 +106,7 @@
 <script type="text/javascript" defer>
   var url = '<%= ENV['BACKEND'] %>';
   var idea_id = '<%= params[:id] %>';
+
   fetch(`${url}/api/v1/cohorts/ideas/${idea_id}`, {credentials: 'include'}).then(function(result) {
     return result.json();
   }).then(function(json) {
@@ -123,4 +123,35 @@
      $("#apis").val(idea['attributes']['apis']).attr('disabled', true);
      $("#oauth").val(idea['attributes']['oauth']).attr('disabled', true);
    };
+</script>
+
+<script type="text/javascript" defer>
+	fetch(`${url}/current_user`, {credentials: 'include'}).then(function(result) {
+	 return result.json();
+		 }).then(function(json) {
+			 editBut(json);
+		 });
+
+		 function editBut(json) {
+			 var delete_but = document.getElementById("deleteIdea");
+			 var edit_but = document.getElementById("editItem");
+			 const ideas = json["data"]["ideas"];
+			 var result = false;
+			 var idea_length = ideas;
+
+			 if (idea_length != undefined) {
+					for(var i = 0; i < ideas.length; i++) {
+						let current = ideas[i];
+
+						if (`${current.id}` === idea_id) {
+							result = true
+						}
+					}
+				}
+
+		 if (result === false) {
+			 delete_but.style.display = "none";
+			 edit_but.style.display = "none";
+		 }
+	 }
 </script>
