@@ -2,10 +2,28 @@
 
 Click to open the [UpVote app](https://upvote-ideas-ui.herokuapp.com/) hosted on Heroku
 
-## Description
-UpVote is an interactive Rails web application built from conception to completion that authenticates with a third-party service (GitHub), consumes the Upsplash API, and provides a solution to an identified problem.
+[![Build Status](https://travis-ci.com/jobannon/upvote_ui.svg?branch=master)](https://travis-ci.com/jobannon/upvote_ui)
 
-UpVote is intended to...
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+* [About the Project](#about-the-project)
+* [Purpose](#purpose)
+  * [Built With](#built-with)
+* [Installation](#installation)
+  * [Requirements](#reqirements)
+  * [Versions](#Versions)
+* [Database](#database)
+  * [Programatic Flow](#programatic-flow)
+* [Testing](#testing)
+  * [Testing Technologies](#testing-technologies)
+* [Roadmap](#roadmap)
+* [Running Tests](#running-tests)
+* [Contact](#contact)
+* [Acknowledgements](#acknowledgements)
+
+## About the project
+UpVote is an interactive Rails web application built from conception to completion that authenticates with a third-party service (GitHub), consumes the Upsplash API, and provides a solution to an identified problem.
 
 ## Purpose
 Object Oriented Programing principles, Restful Routing, Test Driven Development, Behavior Driven Development, Authenticated API calls, OAuth process
@@ -56,9 +74,18 @@ Environment variables and required API keys/tokens:
 * GitHub client_id defined as `ENV['GITHUB_KEY']`
 * GitHub client_secret defined as `ENV['GITHUB_SECRET']`
 
-## Database / Schema Diagram
+### Versions
+- Ruby 2.6.3
+- Rails 6.0.2
 
-<.png placeholder>
+### Related Repos
+- [upvote_api](https://github.com/jobannon/upvote_api)
+
+## Database 
+![image](https://user-images.githubusercontent.com/16090626/75499161-6e586d00-5986-11ea-83f0-c552c29d81a7.png)
+
+## Programatic Flow
+![upvotetech](https://user-images.githubusercontent.com/16090626/75500418-1cb1e180-598a-11ea-8571-797be8c32ece.png)
 
 ## Testing
 
@@ -83,6 +110,14 @@ Run a single test file:
 $ bundle exec rspec <path-to-file>
 ```
 
-## Versions
-- Ruby 2.6.3
-- Rails 6.0.2
+## Roadmap
+* Add an admin functionality
+  * Enabling enrolling a user in cohort 
+* [projectboard](https://github.com/jobannon/upvote_ui/projects/1)
+
+## Contact
+* [jobannon](https://github.com/jobannon)
+* [freeheeling](https://github.com/freeheeling)
+* [hale4029](https://github.com/hale4029)
+## Acknowledgements
+* [Brian Zanti](https://github.com/BrianZanti)
