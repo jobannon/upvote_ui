@@ -25,8 +25,6 @@ Click to open the [UpVote app](https://upvote-ideas-ui.herokuapp.com/) hosted on
 ## About the project
 UpVote is an interactive Rails web application built from conception to completion that authenticates with a third-party service (GitHub), consumes the Upsplash API, and provides a solution to an identified problem.
 
-UpVote is intended to...
-
 ## Purpose
 Object Oriented Programing principles, Restful Routing, Test Driven Development, Behavior Driven Development, Authenticated API calls, OAuth process
 
