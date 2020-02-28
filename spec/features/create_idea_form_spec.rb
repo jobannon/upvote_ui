@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 RSpec.describe 'Create idea page' do
-  xit 'displays a form into which idea details can be entered' do
+  it 'displays a form into which idea details can be entered' do
     visit '/'
 
-    click_on 'Add an Idea'
+    click_on 'Create Idea'
 
-    expect(current_path).to eq('/ideas/new')
-    expect(page).to have_content('Create a Terrificus Idea')
+    expect(current_path).to eq('/cohorts/ideas/new')
+    expect(page).to have_content('Create an Idea')
   end
 
-  xit 'a submitted idea is added to the landing page' do
-    visit '/ideas/new'
+  it 'a submitted idea is added to the landing page', :js do
+    visit '/cohorts/ideas/new'
 
     fill_in :title, with: 'harmony'
     fill_in :pitch, with: 'making the world better'
@@ -22,8 +22,9 @@ RSpec.describe 'Create idea page' do
     fill_in :apis, with: 'soundcloud'
     fill_in :oauth, with: 'OAuth'
 
-    click_on 'Submit Idea'
+    click_on 'Submit'
 
-    expect().to eq('harmony')
+    expect(page).to have_content('harmony')
+    expect(page).to have_content('making the world better')
   end
 end
