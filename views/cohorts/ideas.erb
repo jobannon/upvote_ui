@@ -102,7 +102,7 @@
     right: 0;
     width: 300px;
     height: 100%;
-    padding-top: 125px;
+    padding-top: 100px;
     padding-left: 10px;
   }
 
@@ -164,6 +164,18 @@
     justify-content: space-between;
   }
 
+  .stats_stats {
+    margin-top: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 4px;
+    border: 2px solid #777;
+    background-color: #ffffff;
+  }
+
 </style>
 
 <div class="container-fluid text-center">
@@ -203,6 +215,11 @@
           <td id='5_idea'></td>
         </tr>
       </table>
+      <div class="stats_stats">
+        <p id="student_count"># of Students: </p>
+        <p id="tallied_votes">Tallied Votes: </p>
+        <p id="perecnet_complete">Percent Complete: </p>
+      </div>
     </div>
   </div>
 </div>
@@ -232,10 +249,10 @@
       const pitch = document.createElement('div');
       const votes = document.createElement('p');
       var btn = document.createElement("button");
-      var form = document.createElement('form');
+      //var form = document.createElement('form');
       const contain = document.createElement('div');
       const contain_2 = document.createElement('div');
-      form.setAttribute('method', 'post');
+      //form.setAttribute('method', 'post');
       contain.setAttribute('class', "contain");
       contain_2.setAttribute('class', "contain_22");
       votes.setAttribute('class', "votes");
@@ -244,7 +261,7 @@
       let current = ideas[i];
       console.log(current);
 
-      $(responsive).click(function(){
+      $(title).click(function(){
         window.location = `/cohorts/ideas/${current.id}`
       })
       title.textContent = current.attributes.title;
@@ -252,16 +269,18 @@
       votes.textContent = current.attributes.vote_count;
       var img_url = current.attributes.img_url;
       var idea_id = current.id;
-      form.setAttribute('action', `${url}/api/v1/cohorts/ideas/${idea_id}`);
+      //form.setAttribute('action', `${url}/api/v1/cohorts/ideas/${idea_id}`);
+      btn.setAttribute('onclick', 'voteFunction(this.id)');
+      btn.setAttribute('id', `${current.id}`);
       btn.innerHTML = "Vote";
-      btn.setAttribute('type', 'submit');
+      //btn.setAttribute('type', 'submit');
       gallery.setAttribute('style', `background-image: url(${img_url}); background-size: 100% 100%;`);
       div.setAttribute('class', "pitch");
       pitch.setAttribute('class', "pitch_text");
 
       div.appendChild(pitch);
-      form.appendChild(btn);
-      contain_2.appendChild(form)
+      //form.appendChild(btn);
+      contain_2.appendChild(btn)
       contain_2.appendChild(votes)
       idea.appendChild(contain_2);
       contain.appendChild(title)
@@ -278,13 +297,49 @@
     }
   }
 
-  var intervalID = window.setInterval(myCallback, 1000000)
+  var intervalID = window.setInterval(function () {
+                                      myCallback();
+                                      replayStats();
+                                      }, 500);
 
   function myCallback() {
     fetch(`${url}/api/v1/cohorts/ideas`, {credentials: 'include'}).then(function(result) {
       return result.json();
     }).then(function(json) {
       displayResults(json);
+    });
+  }
+
+  function voteFunction(id) {
+    var idea_id = id
+    fetch(`${url}/api/v1/cohorts/ideas/${idea_id}`, {
+      credentials: 'include',
+      method: 'post'
+    })
+  }
+
+  fetch(`${url}/api/v1/statistics`, {credentials: 'include'}).then(function(result) {
+    return result.json();
+  }).then(function(json) {
+    displayStats(json);
+  });
+
+  function displayStats(json) {
+    data = json.data;
+    debugger;
+    var count = document.getElementById("student_count");
+    var tally = document.getElementById("tallied_votes");
+    var percent = document.getElementById("perecnet_complete");
+    count.textContent = `Student Count: ${data.stats.user_count}`;
+    tally.textContent = `Tallied Votes: ${data.stats.vote_count}`;
+    percent.textContent = `Percent Complete: ${data.stats.percent_complete}`;
+  };
+
+  function replayStats() {
+    fetch(`${url}/api/v1/statistics`, {credentials: 'include'}).then(function(result) {
+      return result.json();
+    }).then(function(json) {
+      displayStats(json);
     });
   }
 </script>
