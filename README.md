@@ -79,13 +79,11 @@ Environment variables and required API keys/tokens:
 - Ruby 2.6.3
 - Rails 6.0.2
 
-### Related Repos
+### Related Repositories
 - [upvote_api](https://github.com/jobannon/upvote_api)
 
 ## Database 
 ![image](https://user-images.githubusercontent.com/16090626/75499161-6e586d00-5986-11ea-83f0-c552c29d81a7.png)
-
-
 
 ## Programatic Flow
 ![upvotetech](https://user-images.githubusercontent.com/16090626/75500418-1cb1e180-598a-11ea-8571-797be8c32ece.png)
@@ -114,8 +112,6 @@ $ bundle exec rspec <path-to-file>
 ```
 
 ## Roadmap
-* Add an admin functionality
-  * Enabling enrolling a user in cohort 
 * [projectboard](https://github.com/jobannon/upvote_ui/projects/1)
 
 ## Contact
