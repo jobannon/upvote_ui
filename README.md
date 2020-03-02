@@ -1,6 +1,7 @@
 # UpVote
-
+![6D9CCA08-9791-48E2-B487-4BAA0358D2AB](https://user-images.githubusercontent.com/16090626/75720162-3a858c00-5c93-11ea-8920-fd6b938275ff.jpeg)
 Click to open the [UpVote app](https://upvote-ideas-ui.herokuapp.com/) hosted on Heroku
+Click [here](https://github.com/jobannon/upvote_api/) to open the related Back-End API supporting this Front-End 
 
 [![Build Status](https://travis-ci.com/jobannon/upvote_ui.svg?branch=master)](https://travis-ci.com/jobannon/upvote_ui)
 
@@ -83,6 +84,8 @@ Environment variables and required API keys/tokens:
 
 ## Database 
 ![image](https://user-images.githubusercontent.com/16090626/75499161-6e586d00-5986-11ea-83f0-c552c29d81a7.png)
+
+
 
 ## Programatic Flow
 ![upvotetech](https://user-images.githubusercontent.com/16090626/75500418-1cb1e180-598a-11ea-8571-797be8c32ece.png)
