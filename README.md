@@ -85,8 +85,8 @@ Environment variables and required API keys/tokens:
 ## Database 
 ![image](https://user-images.githubusercontent.com/16090626/75499161-6e586d00-5986-11ea-83f0-c552c29d81a7.png)
 
-## Programatic Flow
-![upvotetech](https://user-images.githubusercontent.com/16090626/75500418-1cb1e180-598a-11ea-8571-797be8c32ece.png)
+## Architecture
+![image](https://user-images.githubusercontent.com/29346170/75731022-71d15880-5ce6-11ea-9389-9cd546f86ca2.png)
 
 ## Testing
 
