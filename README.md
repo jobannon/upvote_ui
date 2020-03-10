@@ -31,7 +31,7 @@ Object Oriented Programing principles, Restful Routing, Test Driven Development,
 
 ## Welcome Page Demo
 
-![UpVote Demo](.gif placeholder)
+![upvote2](https://user-images.githubusercontent.com/16090626/76369084-f419d800-62f7-11ea-8b69-71d0da146050.gif)
 
 ## Installation
 1. Clone down this and the micro-service repo into a directory of your choice
